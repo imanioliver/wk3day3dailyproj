@@ -107,24 +107,30 @@ let formData = [
   //-creating options elements
   //-setting their value and textcontent
   //-appending them to the select elements
-  // -append to main container
+  // -append to main container ('fields')
 
-let container = document.getElementById("fields")
-
+let fields = document.getElementById("fields");
+let form = document.createElement('form');
 
 for (var i = 0; i < formData.length; i++) {
   let input = document.createElement('input');
+
   if (formData[i].options.length > 0){ //select tag
   input.setAttribute("type", formData[i].type);
-  container.appendChild(input);
+  fields.appendChild(input);
+    let select= document.createElement('select')
+
     for (var j = 0; j < formData[i].options.length; j++) {
-      let option = document.createElement('option')
-
+      let option = document.createElement('option');
       option.setAttribute("label", formData[i].options[j].label);
-      // option.textcontent = formData[i].options[j].label;
-
+      // option.textcontent = formData[i].options[j].label; ----not this
+      // option.label = formData[i].options[j].label;
       option.setAttribute("value", formData[i].options[j].value);
-      input.appendChild(option);
+      option.value = formData[i].options[j].value;
+      select.appendChild(option);
+      // input.appendChild(select);
+      form.appendChild(select);
+      fields.appendChild(form);
 
     }
 
@@ -133,8 +139,6 @@ for (var i = 0; i < formData.length; i++) {
     input.setAttribute("type", formData[i].type);
     input.setAttribute("placeholder", formData[i].label);
     input.setAttribute('id', formData[i].id);
-
-    container.appendChild(input);
   }
-
+fields.appendChild(input);
 }
