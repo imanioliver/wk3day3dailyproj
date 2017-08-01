@@ -113,12 +113,16 @@ let container = document.getElementById("fields")
 
 
 for (var i = 0; i < formData.length; i++) {
-  let input = document.createElement('input')
+  let input = document.createElement('input');
   if (formData[i].options.length > 0){ //select tag
   input.setAttribute("type", formData[i].type);
+  container.appendChild(input);
     for (var j = 0; j < formData[i].options.length; j++) {
       let option = document.createElement('option')
+
       option.setAttribute("label", formData[i].options[j].label);
+      // option.textcontent = formData[i].options[j].label;
+
       option.setAttribute("value", formData[i].options[j].value);
       input.appendChild(option);
 
@@ -130,9 +134,7 @@ for (var i = 0; i < formData.length; i++) {
     input.setAttribute("placeholder", formData[i].label);
     input.setAttribute('id', formData[i].id);
 
-    // container.appendChild(input);
+    container.appendChild(input);
   }
-
-container.appendChild(input);
 
 }
