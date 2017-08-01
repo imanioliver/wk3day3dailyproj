@@ -112,6 +112,7 @@ let formData = [
 let fields = document.getElementById("fields");
 let form = document.createElement('form');
 
+
 for (var i = 0; i < formData.length; i++) {
   let input = document.createElement('input');
 
